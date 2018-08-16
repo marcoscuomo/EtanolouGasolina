@@ -58,25 +58,26 @@ public class MainActivity extends AppCompatActivity {
 
         //Calculando o melhor combustivel com a media padrao (70%)
 
-        Double resDiv = valorEtanol / valorGasolina;
+        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
+        String n = formataNumeros(resDiv);
+        String titulo = "";
+        String msg = "";
+
         if(resDiv <= 0.7){
-
-            //Formatando o resultado
-            DecimalFormat df = new DecimalFormat("#.##");
-            String n = df.format(resDiv);
-
-            //Exibindo um AlertDialog
-            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-
-            dialog.setTitle("Sua melhor escolha");
-            dialog.setMessage("Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n + "%");
-            dialog.setPositiveButton("OK", null);
-            dialog.show();
-
-
+            titulo = "Escolha o Etanol";
+            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n + "%";
         }else{
-
+            titulo = "Escolha a Gasolina";
+            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n + "%";
         }
+
+        //Exibindo um AlertDialog
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+        dialog.setTitle(titulo);
+        dialog.setMessage(msg);
+        dialog.setPositiveButton("OK", null);
+        dialog.show();
 
         //Calculando o melhor combustivel com a media personalizada
 
@@ -90,5 +91,14 @@ public class MainActivity extends AppCompatActivity {
         edtMediaGasolina.setText("");
         edtMediaEtanol.setText("");
 
+    }
+
+    private String formataNumeros(Double resDiv){
+
+        //Formatando o resultado
+        DecimalFormat df = new DecimalFormat("#.##");
+        String res = df.format(resDiv);
+
+        return res;
     }
 }
