@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Etanol ou Gasolina</string>
+    <string name="texto_opcional">*Opcional. Caso não sejam digitas será usada a média de 70%</string>
 </resources>

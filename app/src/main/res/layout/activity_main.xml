@@ -6,4 +6,95 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/edtGasolina"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Digite o preço do etanol (ex: 2.37)"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtEtanol"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Digite o preço da gasolia (ex: 2.37)"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/edtGasolina"
+        app:layout_constraintStart_toStartOf="@+id/edtGasolina"
+        app:layout_constraintTop_toBottomOf="@+id/edtGasolina" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/texto_opcional"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/edtEtanol"
+        app:layout_constraintStart_toStartOf="@+id/edtEtanol"
+        app:layout_constraintTop_toBottomOf="@+id/edtEtanol" />
+
+    <EditText
+        android:id="@+id/edtMediaGasolina"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Digite a média com gasolina. Ex: 8.5"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/edtMediaEtanol"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Digite a média com etanol. Ex: 6.5"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/edtMediaGasolina"
+        app:layout_constraintStart_toStartOf="@+id/edtMediaGasolina"
+        app:layout_constraintTop_toBottomOf="@+id/edtMediaGasolina" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Calcular"
+        app:layout_constraintStart_toStartOf="@+id/edtMediaEtanol"
+        app:layout_constraintTop_toBottomOf="@+id/edtMediaEtanol" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="@+id/edtMediaEtanol"
+        app:layout_constraintTop_toBottomOf="@+id/edtMediaEtanol" />
+
 </android.support.constraint.ConstraintLayout>
