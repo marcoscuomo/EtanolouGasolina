@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/edtGasolina"
+        android:id="@+id/edtEtanol"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -23,16 +23,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtEtanol"
+        android:id="@+id/edtGasolina"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Digite o preço da gasolia (ex: 2.37)"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="@+id/edtGasolina"
-        app:layout_constraintStart_toStartOf="@+id/edtGasolina"
-        app:layout_constraintTop_toBottomOf="@+id/edtGasolina" />
+        app:layout_constraintEnd_toEndOf="@+id/edtEtanol"
+        app:layout_constraintStart_toStartOf="@+id/edtEtanol"
+        app:layout_constraintTop_toBottomOf="@+id/edtEtanol" />
 
     <TextView
         android:id="@+id/textView"
@@ -43,9 +43,9 @@
         android:layout_marginTop="32dp"
         android:text="@string/texto_opcional"
         android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="@+id/edtEtanol"
-        app:layout_constraintStart_toStartOf="@+id/edtEtanol"
-        app:layout_constraintTop_toBottomOf="@+id/edtEtanol" />
+        app:layout_constraintEnd_toEndOf="@+id/edtGasolina"
+        app:layout_constraintStart_toStartOf="@+id/edtGasolina"
+        app:layout_constraintTop_toBottomOf="@+id/edtGasolina" />
 
     <EditText
         android:id="@+id/edtMediaGasolina"
