@@ -29,6 +29,21 @@ public class MainActivity extends AppCompatActivity {
         //Evento clique no botão Calcular
 
         //Evento clique no botão Limpar
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                limparCampos();
+            }
+        });
+
+    }
+
+    private void limparCampos() {
+
+        edtGasolina.setText("");
+        edtEtanol.setText("");
+        edtMediaGasolina.setText("");
+        edtMediaEtanol.setText("");
 
     }
 }
