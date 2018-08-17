@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
         Double valorGasolina        = Double.parseDouble(edtGasolina.getText().toString());
         Double valorEtanol          = Double.parseDouble(edtEtanol.getText().toString());
-        Double valorConsumoGasolina = Double.parseDouble(edtGasolina.getText().toString());
-        Double valorConsumoEtanol   = Double.parseDouble(edtEtanol.getText().toString());
+        Double valorConsumoGasolina = Double.parseDouble(edtMediaGasolina.getText().toString());
+        Double valorConsumoEtanol   = Double.parseDouble(edtMediaEtanol.getText().toString());
         Double valorPersonalizado   = valorConsumoEtanol / valorConsumoGasolina;
 
         Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
@@ -94,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(resDiv <= valorPersonalizado){
             titulo = "Escolha o Etanol";
-            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
+            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de person: " + n;
         }else{
             titulo = "Escolha a Gasolina";
-            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
+            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de person: " + n;
         }
 
         exibirAlertDialog(titulo, msg);
