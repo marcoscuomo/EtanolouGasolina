@@ -51,12 +51,70 @@ public class MainActivity extends AppCompatActivity {
 
     private void calcula() {
 
+        //Inicialização de variaveis para teste de campo vazio
+        String valorEtanol        = edtEtanol.getText().toString();
+        String valorGasolina      = edtGasolina.getText().toString();
+        String valorMedioEtanol   = edtMediaEtanol.getText().toString();
+        String valorMedioGasolina = edtMediaGasolina.getText().toString();
+
+        //Validação de campos vazios
+        if(valorEtanol.isEmpty()){
+            Toast.makeText(this,
+                    "Por favor, preencha o valor do etanol", Toast.LENGTH_LONG).show();
+        }else if(valorGasolina.isEmpty()){
+            Toast.makeText(this,
+                    "Por favor, preencha o valor da gasolina ", Toast.LENGTH_LONG).show();
+        }else if(valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
+            calculaMediaNormal();
+        }else if(valorMedioEtanol.isEmpty() && !valorMedioGasolina.isEmpty()){
+            Toast.makeText(this,
+                    "Para saber o consumo personalizado, você deve preencher o consumo com Etanol", Toast.LENGTH_LONG).show();
+        }else if(!valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
+            Toast.makeText(this,
+                    "Para saber o consumo personalizado, você deve preencher o consumo com Gasolina", Toast.LENGTH_LONG).show();
+        }else{
+            calculaMediaPersonalizada();
+        }
+
+
+    }
+
+    private void calculaMediaPersonalizada() {
+
+        Double valorGasolina        = Double.parseDouble(edtGasolina.getText().toString());
+        Double valorEtanol          = Double.parseDouble(edtEtanol.getText().toString());
+        Double valorConsumoGasolina = Double.parseDouble(edtGasolina.getText().toString());
+        Double valorConsumoEtanol   = Double.parseDouble(edtEtanol.getText().toString());
+        Double valorPersonalizado   = valorConsumoEtanol / valorConsumoGasolina;
+
+        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
+        String n = formataNumeros(resDiv);
+        String titulo = "";
+        String msg = "";
+
+        if(resDiv <= valorPersonalizado){
+            titulo = "Escolha o Etanol";
+            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
+        }else{
+            titulo = "Escolha a Gasolina";
+            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
+        }
+
+        //Exibindo AlertDialog
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+        dialog.setTitle(titulo);
+        dialog.setMessage(msg);
+        dialog.setPositiveButton("OK", null);
+        dialog.show();
+
+
+    }
+
+    private void calculaMediaNormal() {
+
         Double valorGasolina      = Double.parseDouble(edtGasolina.getText().toString());
         Double valorEtanol        = Double.parseDouble(edtEtanol.getText().toString());
-        //Double valorMediaGasolina = Double.parseDouble(edtMediaGasolina.getText().toString());
-        //Double valorMediaEdtanol  = Double.parseDouble(edtMediaEtanol.getText().toString());
-
-        //Calculando o melhor combustivel com a media padrao (70%)
 
         Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
         String n = formataNumeros(resDiv);
@@ -65,22 +123,19 @@ public class MainActivity extends AppCompatActivity {
 
         if(resDiv <= 0.7){
             titulo = "Escolha o Etanol";
-            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n + "%";
+            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
         }else{
             titulo = "Escolha a Gasolina";
-            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n + "%";
+            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
         }
 
-        //Exibindo um AlertDialog
+        //Exibindo AlertDialog
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
 
         dialog.setTitle(titulo);
         dialog.setMessage(msg);
         dialog.setPositiveButton("OK", null);
         dialog.show();
-
-        //Calculando o melhor combustivel com a media personalizada
-
 
     }
 
@@ -96,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
     private String formataNumeros(Double resDiv){
 
         //Formatando o resultado
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("#.##%");
         String res = df.format(resDiv);
 
         return res;
