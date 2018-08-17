@@ -100,13 +100,8 @@ public class MainActivity extends AppCompatActivity {
             msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
         }
 
-        //Exibindo AlertDialog
-        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+        exibirAlertDialog(titulo, msg);
 
-        dialog.setTitle(titulo);
-        dialog.setMessage(msg);
-        dialog.setPositiveButton("OK", null);
-        dialog.show();
 
 
     }
@@ -129,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
             msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
         }
 
+        exibirAlertDialog(titulo, msg);
+
+    }
+
+    private void exibirAlertDialog(String titulo, String msg) {
         //Exibindo AlertDialog
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
 
@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setMessage(msg);
         dialog.setPositiveButton("OK", null);
         dialog.show();
-
     }
 
     private void limparCampos() {
