@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Etanol ou Gasolina</string>
     <string name="texto_opcional">*Opcional. Caso não sejam digitas será usada a média de 70%</string>
+    <string name="hint_etanol">Digite o preço do etanol (ex: 2.37)</string>
+    <string name="hint_gasolina">Digite o preço da gasolia (ex: 4.37)</string>
+    <string name="hint_media_etnol">Digite a média com etanol. Ex: 6.5</string>
+    <string name="hint_media_gasolina">Digite a média com gasolina. Ex: 8.5</string>
+    <string name="btn_calcular">Calcular</string>
+    <string name="btn_limpar">Limpar</string>
 </resources>
