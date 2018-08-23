@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calcula();
-
-
-
             }
         });
 
@@ -98,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculaMediaNormal() {
 
-
         //Forma os valores do Edit Text Current
         String etanol = String.valueOf(edtEtanol.getRawValue());
         String gasolina = String.valueOf(edtGasolina.getRawValue());
@@ -125,8 +121,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculaMediaPersonalizada() {
 
-        Double valorGasolina        = Double.parseDouble(edtGasolina.getText().toString());
-        Double valorEtanol          = Double.parseDouble(edtEtanol.getText().toString());
+        //Forma os valores do Edit Text Current
+        String etanol = String.valueOf(edtEtanol.getRawValue());
+        String gasolina = String.valueOf(edtGasolina.getRawValue());
+
+        Double valorEtanol        = Double.parseDouble(etanol);
+        Double valorGasolina      = Double.parseDouble(gasolina);
+
         Double valorConsumoGasolina = Double.parseDouble(edtMediaGasolina.getText().toString());
         Double valorConsumoEtanol   = Double.parseDouble(edtMediaEtanol.getText().toString());
         Double valorPersonalizado   = valorConsumoEtanol / valorConsumoGasolina;
@@ -138,16 +139,13 @@ public class MainActivity extends AppCompatActivity {
 
         if(resDiv <= valorPersonalizado){
             titulo = "Escolha o Etanol";
-            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de person: " + n;
+            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
         }else{
             titulo = "Escolha a Gasolina";
-            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de person: " + n;
+            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
         }
 
         exibirAlertDialog(titulo, msg);
-
-
-
     }
 
     private void exibirAlertDialog(String titulo, String msg) {
@@ -166,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
         edtEtanol.setText("");
         edtMediaGasolina.setText("");
         edtMediaEtanol.setText("");
-
     }
 
     private String formataNumeroDeDoubleParaString(Double resDiv){
