@@ -7,4 +7,7 @@
     <string name="hint_media_gasolina">Digite a média com gasolina. Ex: 8.5</string>
     <string name="btn_calcular">Calcular</string>
     <string name="btn_limpar">Limpar</string>
+    <string name="txtetanol">Etanol</string>
+    <string name="valorgasolina">Valor da gasolina</string>
+    <string name="valoretanol">Valor do etanol</string>
 </resources>
