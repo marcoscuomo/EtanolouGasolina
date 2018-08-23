@@ -1,6 +1,6 @@
 package br.com.mojumob.etanolougasolina;
 
-import android.support.v4.app.NotificationCompat;
+import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.blackcat.currencyedittext.CurrencyEditText;
-
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -18,7 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Atributos
     private Button btnCalcular, btnLimpar;
-    private CurrencyEditText edtEtanol, edtGasolina, edtMediaEtanol, edtMediaGasolina;
+    private EditText edtMediaEtanol, edtMediaGasolina;
+    private CurrencyEditText edtEtanol, edtGasolina;
+    private Context context;
+    private String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +53,12 @@ public class MainActivity extends AppCompatActivity {
         edtMediaEtanol   = findViewById(R.id.edtMediaEtanol);
         btnCalcular      = findViewById(R.id.btnCalcular);
         btnLimpar        = findViewById(R.id.btnLimpar);
+        context          = this;
 
+        //Define o locale como pt-br para exibição do R$
         Locale locale = new Locale("pt", "BR");
         edtGasolina.setLocale(locale);
         edtEtanol.setLocale(locale);
-        edtMediaEtanol.setLocale(locale);
-        edtMediaGasolina.setLocale(locale);
-
 
     }
 
@@ -72,24 +72,22 @@ public class MainActivity extends AppCompatActivity {
 
         //Validação de campos vazios
         if(valorEtanol.isEmpty()){
-            Toast.makeText(this,
-                    "Por favor, preencha o valor do etanol", Toast.LENGTH_LONG).show();
+            exibeMensagem("Por favor, preencha o valor do etanol");
         }else if(valorGasolina.isEmpty()){
-            Toast.makeText(this,
-                    "Por favor, preencha o valor da gasolina ", Toast.LENGTH_LONG).show();
+            exibeMensagem("Por favor, preencha o valor da gasolina ");
         }else if(valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
             calculaMediaNormal();
         }else if(valorMedioEtanol.isEmpty() && !valorMedioGasolina.isEmpty()){
-            Toast.makeText(this,
-                    "Para saber o consumo personalizado, você deve preencher o consumo com Etanol", Toast.LENGTH_LONG).show();
+            exibeMensagem("Para saber o consumo personalizado, você deve preencher o consumo com Etanol");
         }else if(!valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
-            Toast.makeText(this,
-                    "Para saber o consumo personalizado, você deve preencher o consumo com Gasolina", Toast.LENGTH_LONG).show();
+            exibeMensagem("Para saber o consumo personalizado, você deve preencher o consumo com Gasolina");
         }else{
             calculaMediaPersonalizada();
         }
+    }
 
-
+    private void exibeMensagem(String msg){
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     private void calculaMediaPersonalizada() {
