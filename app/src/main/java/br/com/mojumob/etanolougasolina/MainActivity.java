@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calcula();
+
+
+
             }
         });
 
@@ -65,15 +68,16 @@ public class MainActivity extends AppCompatActivity {
     private void calcula() {
 
         //Inicialização de variaveis para teste de campo vazio
+
         String valorEtanol        = edtEtanol.getText().toString();
         String valorGasolina      = edtGasolina.getText().toString();
         String valorMedioEtanol   = edtMediaEtanol.getText().toString();
         String valorMedioGasolina = edtMediaGasolina.getText().toString();
 
         //Validação de campos vazios
-        if(valorEtanol.isEmpty()){
+        if(valorEtanol.equals("R$0,00") || valorEtanol.isEmpty()){
             exibeMensagem("Por favor, preencha o valor do etanol");
-        }else if(valorGasolina.isEmpty()){
+        }else if(valorGasolina.equals("R$0,00") || valorGasolina.isEmpty()){
             exibeMensagem("Por favor, preencha o valor da gasolina ");
         }else if(valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
             calculaMediaNormal();
@@ -90,6 +94,35 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
+
+
+    private void calculaMediaNormal() {
+
+
+        //Forma os valores do Edit Text Current
+        String etanol = String.valueOf(edtEtanol.getRawValue());
+        String gasolina = String.valueOf(edtGasolina.getRawValue());
+
+        Double valorEtanol        = Double.parseDouble(etanol);
+        Double valorGasolina      = Double.parseDouble(gasolina);
+
+        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
+        String n = formataNumeroDeDoubleParaString(resDiv);
+        String titulo = "";
+        String msg = "";
+
+        if(resDiv <= 0.7){
+            titulo = "Escolha o Etanol";
+            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
+        }else{
+            titulo = "Escolha a Gasolina";
+            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
+        }
+
+        exibirAlertDialog(titulo, msg);
+
+    }
+
     private void calculaMediaPersonalizada() {
 
         Double valorGasolina        = Double.parseDouble(edtGasolina.getText().toString());
@@ -99,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         Double valorPersonalizado   = valorConsumoEtanol / valorConsumoGasolina;
 
         Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
-        String n = formataNumeros(resDiv);
+        String n = formataNumeroDeDoubleParaString(resDiv);
         String titulo = "";
         String msg = "";
 
@@ -114,28 +147,6 @@ public class MainActivity extends AppCompatActivity {
         exibirAlertDialog(titulo, msg);
 
 
-
-    }
-
-    private void calculaMediaNormal() {
-
-        Double valorGasolina      = Double.parseDouble(edtGasolina.getText().toString());
-        Double valorEtanol        = Double.parseDouble(edtEtanol.getText().toString());
-
-        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
-        String n = formataNumeros(resDiv);
-        String titulo = "";
-        String msg = "";
-
-        if(resDiv <= 0.7){
-            titulo = "Escolha o Etanol";
-            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
-        }else{
-            titulo = "Escolha a Gasolina";
-            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
-        }
-
-        exibirAlertDialog(titulo, msg);
 
     }
 
@@ -158,11 +169,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String formataNumeros(Double resDiv){
+    private String formataNumeroDeDoubleParaString(Double resDiv){
 
         //Formatando o resultado
         DecimalFormat df = new DecimalFormat("#.##%");
         String res = df.format(resDiv);
+
+        return res;
+    }
+
+    private String formaNumeroDeStringParaDouble(String valor){
+
+        DecimalFormat df = new DecimalFormat("#,##%");
+        String res = df.format(valor);
 
         return res;
     }
