@@ -9,27 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.blackcat.currencyedittext.CurrencyEditText;
+
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     //Atributos
-    private EditText edtEtanol, edtGasolina, edtMediaEtanol, edtMediaGasolina;
     private Button btnCalcular, btnLimpar;
+    private CurrencyEditText edtEtanol, edtGasolina, edtMediaEtanol, edtMediaGasolina;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //Inicializaçoes
-        edtGasolina      = findViewById(R.id.edtGasolina);
-        edtEtanol        = findViewById(R.id.edtEtanol);
-        edtMediaGasolina = findViewById(R.id.edtMediaGasolina);
-        edtMediaEtanol   = findViewById(R.id.edtMediaEtanol);
-        btnCalcular      = findViewById(R.id.btnCalcular);
-        btnLimpar        = findViewById(R.id.btnLimpar);
-
+        inicializaComponentes();
 
         //Evento clique no botão Calcular
         btnCalcular.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +41,24 @@ public class MainActivity extends AppCompatActivity {
                 limparCampos();
             }
         });
+
+    }
+
+    private void inicializaComponentes() {
+        //Inicializaçoes
+        edtGasolina      = findViewById(R.id.edtGasolina);
+        edtEtanol        = findViewById(R.id.edtEtanol);
+        edtMediaGasolina = findViewById(R.id.edtMediaGasolina);
+        edtMediaEtanol   = findViewById(R.id.edtMediaEtanol);
+        btnCalcular      = findViewById(R.id.btnCalcular);
+        btnLimpar        = findViewById(R.id.btnLimpar);
+
+        Locale locale = new Locale("pt", "BR");
+        edtGasolina.setLocale(locale);
+        edtEtanol.setLocale(locale);
+        edtMediaEtanol.setLocale(locale);
+        edtMediaGasolina.setLocale(locale);
+
 
     }
 
