@@ -9,7 +9,7 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
-    <EditText
+    <com.blackcat.currencyedittext.CurrencyEditText
         android:id="@+id/edtEtanol"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <com.blackcat.currencyedittext.CurrencyEditText
         android:id="@+id/edtGasolina"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="@+id/edtGasolina"
         app:layout_constraintTop_toBottomOf="@+id/edtGasolina" />
 
-    <EditText
+    <com.blackcat.currencyedittext.CurrencyEditText
         android:id="@+id/edtMediaEtanol"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
+    <com.blackcat.currencyedittext.CurrencyEditText
         android:id="@+id/edtMediaGasolina"
         android:layout_width="0dp"
         android:layout_height="42dp"
