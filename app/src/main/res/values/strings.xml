@@ -10,4 +10,12 @@
     <string name="txtetanol">Etanol</string>
     <string name="valorgasolina">Valor da gasolina</string>
     <string name="valoretanol">Valor do etanol</string>
+    <string name="preenchacampoetanol">Por favor, preencha o valor do etanol</string>
+    <string name="preenchacampogasolina">Por favor, preencha o valor da gasolina</string>
+    <string name="campopersonalizadoetanolvazio">Para saber o consumo personalizado, você deve preencher o consumo com Etanol</string>
+    <string name="campopersonalizadogasolinavazio">Para saber o consumo personalizado, você deve preencher o consumo com Gasolina</string>
+    <string name="escolhaEtanol">Escolha o Etanol</string>
+    <string name="abastecaEtanol">Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de:</string>
+    <string name="escolhaGasolina">Escolha a Gasolina</string>
+    <string name="abastecaGasolina">Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de:</string>
 </resources>

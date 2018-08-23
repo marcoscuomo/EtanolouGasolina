@@ -73,15 +73,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Validação de campos vazios
         if(valorEtanol.equals("R$0,00") || valorEtanol.isEmpty()){
-            exibeMensagem("Por favor, preencha o valor do etanol");
+            exibeMensagem(getString(R.string.preenchacampoetanol));
         }else if(valorGasolina.equals("R$0,00") || valorGasolina.isEmpty()){
-            exibeMensagem("Por favor, preencha o valor da gasolina ");
+            exibeMensagem(getString(R.string.preenchacampogasolina));
         }else if(valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
             calculaMediaNormal();
         }else if(valorMedioEtanol.isEmpty() && !valorMedioGasolina.isEmpty()){
-            exibeMensagem("Para saber o consumo personalizado, você deve preencher o consumo com Etanol");
+            exibeMensagem(getString(R.string.campopersonalizadoetanolvazio));
         }else if(!valorMedioEtanol.isEmpty() && valorMedioGasolina.isEmpty()){
-            exibeMensagem("Para saber o consumo personalizado, você deve preencher o consumo com Gasolina");
+            exibeMensagem(getString(R.string.campopersonalizadogasolinavazio));
         }else{
             calculaMediaPersonalizada();
         }
@@ -108,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
         String msg = "";
 
         if(resDiv <= 0.7){
-            titulo = "Escolha o Etanol";
-            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
+            titulo = getString(R.string.escolhaEtanol);
+            msg = getString(R.string.abastecaEtanol) + n;
         }else{
-            titulo = "Escolha a Gasolina";
-            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
+            titulo = getString(R.string.escolhaGasolina);
+            msg = getString(R.string.abastecaGasolina) + n;
         }
 
         exibirAlertDialog(titulo, msg);
@@ -138,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
         String msg = "";
 
         if(resDiv <= valorPersonalizado){
-            titulo = "Escolha o Etanol";
-            msg = "Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de: " + n;
+            titulo = getString(R.string.escolhaEtanol);
+            msg = getString(R.string.abastecaEtanol) + n;
         }else{
-            titulo = "Escolha a Gasolina";
-            msg = "Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de: " + n;
+            titulo = getString(R.string.escolhaGasolina);
+            msg = getString(R.string.abastecaGasolina) + n;
         }
 
         exibirAlertDialog(titulo, msg);
