@@ -2,30 +2,55 @@ package br.com.mojumob.etanolougasolina.model;
 
 public class Combustivel {
 
-    String tipoCombistivel;
-    String preco;
+    private String valorEtanol;
+    private String valorGasolina;
+    private String mediaEtanol;
+    private String mediaGasolina;
 
     public Combustivel() {
     }
 
-    public Combustivel(String tipoCombistivel, String preco) {
-        this.tipoCombistivel = tipoCombistivel;
-        this.preco = preco;
+    public Combustivel(String valorEtanol, String valorGasolina) {
+        this.valorEtanol = valorEtanol;
+        this.valorGasolina = valorGasolina;
     }
 
-    public String getTipoCombistivel() {
-        return tipoCombistivel;
+    public Combustivel(String valorEtanol, String valorGasolina, String mediaEtanol, String mediaGasolina) {
+        this.valorEtanol = valorEtanol;
+        this.valorGasolina = valorGasolina;
+        this.mediaEtanol = mediaEtanol;
+        this.mediaGasolina = mediaGasolina;
     }
 
-    public void setTipoCombistivel(String tipoCombistivel) {
-        this.tipoCombistivel = tipoCombistivel;
+    public String getValorEtanol() {
+        return valorEtanol;
     }
 
-    public String getPreco() {
-        return preco;
+    public void setValorEtanol(String valorEtanol) {
+        this.valorEtanol = valorEtanol;
     }
 
-    public void setPreco(String preco) {
-        this.preco = preco;
+    public String getValorGasolina() {
+        return valorGasolina;
+    }
+
+    public void setValorGasolina(String valorGasolina) {
+        this.valorGasolina = valorGasolina;
+    }
+
+    public String getMediaEtanol() {
+        return mediaEtanol;
+    }
+
+    public void setMediaEtanol(String mediaEtanol) {
+        this.mediaEtanol = mediaEtanol;
+    }
+
+    public String getMediaGasolina() {
+        return mediaGasolina;
+    }
+
+    public void setMediaGasolina(String mediaGasolina) {
+        this.mediaGasolina = mediaGasolina;
     }
 }
