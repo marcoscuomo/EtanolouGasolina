@@ -15,4 +15,4 @@ Recursos utilizados:
 - Currency EditText
 - OO
 
-<img src="https://360pushcdn-4c63.kxcdn.com/images/logo360_header.br.png?v=1271"/>
+<img src="http://www.mojumob.com.br/git/etanolougasolina/imagens/prints/enatolougasolina1.png"/> <img src="http://www.mojumob.com.br/git/etanolougasolina/imagens/prints/etanolougasolina2.png"/> 
