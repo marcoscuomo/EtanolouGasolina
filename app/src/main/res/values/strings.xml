@@ -15,7 +15,7 @@
     <string name="campopersonalizadoetanolvazio">Para saber o consumo personalizado, você deve preencher o consumo com Etanol</string>
     <string name="campopersonalizadogasolinavazio">Para saber o consumo personalizado, você deve preencher o consumo com Gasolina</string>
     <string name="escolhaEtanol">Escolha o Etanol</string>
-    <string name="abastecaEtanol">Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de:</string>
+    <string name="abastecaEtanol">Abasteça Com Etanol. A relação de consumo Etanol/Gaslina é de </string>
     <string name="escolhaGasolina">Escolha a Gasolina</string>
-    <string name="abastecaGasolina">Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de:</string>
+    <string name="abastecaGasolina">Abasteça Com Gasolina. A relação de consumo Etanol/Gaslina é de </string>
 </resources>

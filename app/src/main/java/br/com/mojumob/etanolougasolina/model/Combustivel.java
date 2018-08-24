@@ -6,7 +6,7 @@ public class Combustivel {
     private String valorGasolina;
     private String mediaEtanol;
     private String mediaGasolina;
-    private Double precoEtnol;
+    private Double precoEtanol;
     private Double precoGasolina;
 
 
@@ -25,12 +25,12 @@ public class Combustivel {
         this.mediaGasolina = mediaGasolina;
     }
 
-    public Double getPrecoEtnol() {
-        return precoEtnol;
+    public Double getPrecoEtanol() {
+        return precoEtanol;
     }
 
-    public void setPrecoEtnol(Double precoEtnol) {
-        this.precoEtnol = precoEtnol;
+    public void setPrecoEtanol(Double precoEtanol) {
+        this.precoEtanol = precoEtanol;
     }
 
     public Double getPrecoGasolina() {
