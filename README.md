@@ -8,3 +8,5 @@ Recursos utilizados:
 - Constraintlayout
 - Currency EditText
 - OO
+
+<img src="https://360pushcdn-4c63.kxcdn.com/images/logo360_header.br.png?v=1271"/>
