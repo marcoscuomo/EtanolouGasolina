@@ -18,7 +18,7 @@ public class PresenterValidacoes {
             mainActivity.erroValorGasolinaEmBranco();
         }else if (mediaEtanol.isEmpty() && mediaGasolina.isEmpty()){
             //Calculo realizado com a media padrao, pois o usuario não colocou sua media de consumo
-
+            mainActivity.calculoNormal();
         }else if(mediaEtanol.isEmpty()){
             mainActivity.erroValorMediaEtanolVazio();
         }else if(mediaGasolina.isEmpty()){

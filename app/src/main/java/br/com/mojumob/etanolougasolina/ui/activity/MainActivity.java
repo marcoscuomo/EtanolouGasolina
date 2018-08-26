@@ -56,8 +56,22 @@ public class MainActivity extends AppCompatActivity {
         inicializaMoeda();
         presenterValidacoes = new PresenterValidacoes(MainActivity.this);
         combustivel = new Combustivel();
+    }
 
+    public Combustivel pegaCampos(){
 
+        String etanol        = edtEtanol.getText().toString();
+        String gasolina      = edtGasolina.getText().toString();
+        String mediaEtanol   = edtMediaEtanol.getText().toString();
+        String mediaGasolina = edtMediaGasolina.getText().toString();
+
+        combustivel = new Combustivel();
+        combustivel.setValorEtanol(etanol);
+        combustivel.setValorGasolina(gasolina);
+        combustivel.setMediaEtanol(mediaEtanol);
+        combustivel.setMediaGasolina(mediaGasolina);
+
+        return combustivel;
     }
 
     @OnClick(R.id.btnCalcular)
@@ -209,5 +223,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void showMelhorCombustivelPeronalizado() {
         exibeMensagem("Consumo personalizado");
+    }
+
+    public void calculoNormal() {
+
+        //Forma os valores do Edit Text Current
+        String etanol = String.valueOf(edtEtanol.getRawValue());
+        String gasolina = String.valueOf(edtGasolina.getRawValue());
+
+        Double valorEtanol        = Double.parseDouble(etanol);
+        Double valorGasolina      = Double.parseDouble(gasolina);
+
+
+
+        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
+        String n = formataNumeroDeDoubleParaString(resDiv);
+        String titulo = "";
+        String msg = "";
+
+        if(resDiv <= 0.7){
+            titulo = getString(R.string.escolhaEtanol);
+            msg = getString(R.string.abastecaEtanol) + n;
+        }else{
+            titulo = getString(R.string.escolhaGasolina);
+            msg = getString(R.string.abastecaGasolina) + n;
+        }
+
+        exibirAlertDialog(titulo, msg);
     }
 }
