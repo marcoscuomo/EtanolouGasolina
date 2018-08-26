@@ -15,11 +15,11 @@ import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.model.Combustivel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
     //Atributos
-
     @BindView(R.id.btnCalcular)
     Button btnCalcular;
 
@@ -49,24 +49,25 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        inicializaComponentes();
 
-        //Evento clique no botão Calcular
-        btnCalcular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validaCampos();
-            }
-        });
 
-        //Evento clique no botão Limpar
-        btnLimpar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                limparCampos();
-            }
-        });
 
+
+
+
+    }
+
+    @OnClick(R.id.btnCalcular)
+    public void validarCampos(){
+        validaCampos();
+    }
+
+    @OnClick(R.id.btnLimpar)
+    public void limpaCampos(){
+        edtGasolina.setText("");
+        edtEtanol.setText("");
+        edtMediaGasolina.setText("");
+        edtMediaEtanol.setText("");
     }
 
     private void inicializaComponentes() {
