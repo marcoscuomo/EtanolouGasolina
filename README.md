@@ -14,5 +14,6 @@ Recursos utilizados:
 - Constraintlayout
 - Currency EditText
 - OO
+- Butterknife
 
 <img src="http://www.mojumob.com.br/git/etanolougasolina/imagens/prints/enatolougasolina1.png"/> <img src="http://www.mojumob.com.br/git/etanolougasolina/imagens/prints/etanolougasolina2.png"/> 
