@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.blackcat.currencyedittext.CurrencyEditText;
 import java.text.DecimalFormat;
 import java.util.Locale;
-
 import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.model.Combustivel;
 
