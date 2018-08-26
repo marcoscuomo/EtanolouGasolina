@@ -63,12 +63,24 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnCalcular)
     public void validarCampos(){
 
-        combustivel.setValorEtanol(edtEtanol.getText().toString());
-        combustivel.setValorGasolina(edtGasolina.getText().toString());
+        String valorEtanol   = edtEtanol.getText().toString();
+        String valorGasolina = edtGasolina.getText().toString();
+        String mediaEtanol   = edtMediaEtanol.getText().toString();
+        String mediaGasolina = edtMediaGasolina.getText().toString();
 
-        presenterValidacoes.validaCampos(combustivel);
+        /*Double mediaEtanol = 0.0;
+        Double mediaGasolina = 0.0;
 
-        validaCampos();
+        if(!edtMediaEtanol.getText().toString().isEmpty()){
+            mediaEtanol = Double.parseDouble(edtMediaEtanol.getText().toString());
+        }
+
+        if(!edtMediaGasolina.getText().toString().isEmpty()){
+            mediaGasolina = Double.parseDouble(edtMediaGasolina.getText().toString());
+        }*/
+
+        presenterValidacoes.validaCampos(valorEtanol, valorGasolina, mediaEtanol, mediaGasolina);
+
     }
 
     @OnClick(R.id.btnLimpar)
@@ -220,5 +232,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void erroValorEtanolEmBranco() {
         exibeMensagem("Preencha o valor do Etanol");
+    }
+
+    public void erroValorGasolinaEmBranco() {
+        exibeMensagem("Preencha o valor da Gasolina");
+    }
+
+    public void showMelhorCombustivel() {
+        exibeMensagem("Tudo ok");
+    }
+
+    public void erroValorMediaEtanolVazio() {
+        exibeMensagem(getString(R.string.campopersonalizadoetanolvazio));
+    }
+
+    public void erroValorMediaGasolinaVazio() {
+        exibeMensagem(getString(R.string.campopersonalizadogasolinavazio));
+    }
+
+    public void showMelhorCombustivelPeronalizado() {
+        exibeMensagem("Consumo personalizado");
     }
 }
