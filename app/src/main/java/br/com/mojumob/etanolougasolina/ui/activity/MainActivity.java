@@ -13,6 +13,7 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.model.Combustivel;
+import br.com.mojumob.etanolougasolina.presenter.PresenterValidacoes;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -38,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.edtGasolina)
     CurrencyEditText edtGasolina;
 
-    Context context;
-    String msg;
-    Combustivel combustivel;
+    private Context context;
+    private String msg;
+    private Combustivel combustivel;
+    private PresenterValidacoes presenterValidacoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         inicializaMoeda();
+        presenterValidacoes = new PresenterValidacoes();
+        combustivel = new Combustivel();
 
     }
 
     @OnClick(R.id.btnCalcular)
     public void validarCampos(){
+
+
+        combustivel.setValorEtanol(edtEtanol.getText().toString());
+        combustivel.setValorGasolina(edtGasolina.getText().toString());
+
+        presenterValidacoes.validaCampos(combustivel);
+
         validaCampos();
     }
 
