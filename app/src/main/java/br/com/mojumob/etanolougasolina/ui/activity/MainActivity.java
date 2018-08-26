@@ -20,7 +20,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Atributos
+    //Atributos do XML
     @BindView(R.id.btnCalcular)
     Button btnCalcular;
 
@@ -39,26 +39,29 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.edtGasolina)
     CurrencyEditText edtGasolina;
 
-    private Context context;
-    private String msg;
+    //Atributos da lógica
     private Combustivel combustivel;
     private PresenterValidacoes presenterValidacoes;
+    private Context context;
+    private String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        context = MainActivity.this;
         ButterKnife.bind(this);
         inicializaMoeda();
-        presenterValidacoes = new PresenterValidacoes();
+        presenterValidacoes = new PresenterValidacoes(MainActivity.this);
         combustivel = new Combustivel();
+
 
     }
 
     @OnClick(R.id.btnCalcular)
     public void validarCampos(){
-
 
         combustivel.setValorEtanol(edtEtanol.getText().toString());
         combustivel.setValorGasolina(edtGasolina.getText().toString());
@@ -213,5 +216,9 @@ public class MainActivity extends AppCompatActivity {
         String res = df.format(valor);
 
         return res;
+    }
+
+    public void erroValorEtanolEmBranco() {
+        exibeMensagem("Preencha o valor do Etanol");
     }
 }

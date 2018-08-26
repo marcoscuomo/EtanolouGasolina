@@ -15,12 +15,12 @@ public class PresenterValidacoes {
 
         if(combustivel.getValorEtanol().isEmpty() || combustivel.getValorGasolina().isEmpty()){
 
-            if(combustivel.getValorGasolina().isEmpty()){
-
+            if(combustivel.getValorEtanol().isEmpty()){
+                mainActivity.erroValorEtanolEmBranco();
             }
 
-            if(combustivel.getValorEtanol().isEmpty()){
-
+            if(combustivel.getValorGasolina().isEmpty()){
+                mainActivity.erroValorGasolinaEmBranco();
             }
 
         }
