@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
 
         combustivel = pegaCampos();
 
-        //Forma os valores do Edit Text Current
+        //Forma os valores do EditText Current
         String etanol   = combustivel.getValorRawEtanol();
         String gasolina = combustivel.getValorRawGasolina();
 
@@ -257,5 +257,28 @@ public class MainActivity extends AppCompatActivity {
         String msg = getString(R.string.abastecaGasolina) + " " + percentualDiferenca;
 
         exibirAlertDialog(titulo, msg);
+    }
+
+    public void calculoPersonalizado() {
+
+        combustivel = pegaCampos();
+
+        //Forma os valores do EditText Current
+        String etanol = String.valueOf(combustivel.getValorRawEtanol());
+        String gasolina = String.valueOf(combustivel.getValorRawGasolina());
+        String mediaEtanol = String.valueOf(combustivel.getMediaEtanol());
+        String mediaGasolina = String.valueOf(combustivel.getMediaGasolina());
+
+        Double valorEtanol        = Double.parseDouble(etanol);
+        Double valorGasolina      = Double.parseDouble(gasolina);
+        Double valorMediaEtanol   = Double.parseDouble(mediaEtanol);
+        Double valorMediaGasolina = Double.parseDouble(mediaGasolina);
+
+        presenterValidacoes.calculaPersonalizado(valorEtanol, valorGasolina, valorMediaEtanol, valorMediaGasolina);
+
+        Double valorPersonalizado   = valorMediaEtanol / valorMediaGasolina;
+
+
+
     }
 }
