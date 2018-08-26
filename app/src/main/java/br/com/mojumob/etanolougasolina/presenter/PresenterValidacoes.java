@@ -1,7 +1,6 @@
 package br.com.mojumob.etanolougasolina.presenter;
 
 import java.text.DecimalFormat;
-
 import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.ui.activity.MainActivity;
 
@@ -29,7 +28,6 @@ public class PresenterValidacoes {
         }else{
             // Calculo realizado com a media personalizada
             mainActivity.calculoPersonalizado();
-
         }
     }
 
@@ -65,8 +63,6 @@ public class PresenterValidacoes {
 
         Double resultadoDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
         String percentualDiferenca = formataNumeroDeDoubleParaString(resultadoDiv);
-        String titulo = "";
-        String msg = "";
 
         Double valorPersonalizado   = valorMediaEtanol / valorMediaGasolina;
 

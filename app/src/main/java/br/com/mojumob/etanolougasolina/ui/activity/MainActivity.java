@@ -131,15 +131,6 @@ public class MainActivity extends AppCompatActivity {
         edtMediaEtanol.setText("");
     }
 
-    private String formataNumeroDeDoubleParaString(Double resDiv){
-
-        //Formatando o resultado
-        DecimalFormat df = new DecimalFormat("#.##%");
-        String res = df.format(resDiv);
-
-        return res;
-    }
-
     public void erroValorEtanolEmBranco() {
         exibeMensagem("Preencha o valor do Etanol");
     }
