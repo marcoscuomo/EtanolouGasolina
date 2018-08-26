@@ -68,17 +68,6 @@ public class MainActivity extends AppCompatActivity {
         String mediaEtanol   = edtMediaEtanol.getText().toString();
         String mediaGasolina = edtMediaGasolina.getText().toString();
 
-        /*Double mediaEtanol = 0.0;
-        Double mediaGasolina = 0.0;
-
-        if(!edtMediaEtanol.getText().toString().isEmpty()){
-            mediaEtanol = Double.parseDouble(edtMediaEtanol.getText().toString());
-        }
-
-        if(!edtMediaGasolina.getText().toString().isEmpty()){
-            mediaGasolina = Double.parseDouble(edtMediaGasolina.getText().toString());
-        }*/
-
         presenterValidacoes.validaCampos(valorEtanol, valorGasolina, mediaEtanol, mediaGasolina);
 
     }
@@ -91,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
         edtMediaEtanol.setText("");
     }
 
-
-
     private void inicializaMoeda() {
         //Define o locale como pt-br para exibição do R$
         Locale locale = new Locale("pt", "BR");
@@ -101,36 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private Combustivel getValoresCombustivel(){
-
-        combustivel = new Combustivel();
-        combustivel.setValorEtanol(edtEtanol.getText().toString());
-        combustivel.setValorGasolina(edtGasolina.getText().toString());
-        combustivel.setMediaEtanol(edtMediaEtanol.getText().toString());
-        combustivel.setMediaGasolina(edtMediaGasolina.getText().toString());
-
-        return combustivel;
-    }
-
-    private void validaCampos() {
-
-        Combustivel combustivel = getValoresCombustivel();
-
-        if(combustivel.getValorEtanol().equals("R$0,00") || combustivel.getValorEtanol().isEmpty()){
-            exibeMensagem(getString(R.string.preenchacampoetanol));
-        }else if(combustivel.getValorGasolina().equals("R$0,00") || combustivel.getValorGasolina().isEmpty()){
-            exibeMensagem(getString(R.string.preenchacampogasolina));
-        }else if(combustivel.getMediaEtanol().isEmpty() && combustivel.getMediaGasolina().isEmpty()){
-            calculaMediaNormal();
-        }else if(combustivel.getMediaEtanol().isEmpty() && !combustivel.getMediaGasolina().isEmpty()){
-            exibeMensagem(getString(R.string.campopersonalizadoetanolvazio));
-        }else if(!combustivel.getMediaEtanol().isEmpty() && combustivel.getMediaGasolina().isEmpty()){
-            exibeMensagem(getString(R.string.campopersonalizadogasolinavazio));
-        }else{
-            calculaMediaPersonalizada();
-        }
-
-    }
 
     private void exibeMensagem(String msg){
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
