@@ -13,21 +13,42 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.model.Combustivel;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
     //Atributos
-    private Button btnCalcular, btnLimpar;
-    private EditText edtMediaEtanol, edtMediaGasolina;
-    private CurrencyEditText edtEtanol, edtGasolina;
-    private Context context;
-    private String msg;
-    private Combustivel combustivel;
+
+    @BindView(R.id.btnCalcular)
+    Button btnCalcular;
+
+    @BindView(R.id.btnLimpar)
+    Button btnLimpar;
+
+    @BindView(R.id.edtMediaEtanol)
+    EditText edtMediaEtanol;
+
+    @BindView(R.id.edtMediaGasolina)
+    EditText edtMediaGasolina;
+
+    @BindView(R.id.edtEtanol)
+    CurrencyEditText edtEtanol;
+
+    @BindView(R.id.edtGasolina)
+    CurrencyEditText edtGasolina;
+
+    Context context;
+    String msg;
+    Combustivel combustivel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
         inicializaComponentes();
 
         //Evento clique no botão Calcular
