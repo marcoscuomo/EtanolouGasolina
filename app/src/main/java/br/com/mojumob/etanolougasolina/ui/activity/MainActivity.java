@@ -113,64 +113,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private void calculaMediaNormal() {
-
-        //Forma os valores do Edit Text Current
-        String etanol = String.valueOf(edtEtanol.getRawValue());
-        String gasolina = String.valueOf(edtGasolina.getRawValue());
-
-        Double valorEtanol        = Double.parseDouble(etanol);
-        Double valorGasolina      = Double.parseDouble(gasolina);
-
-
-
-        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
-        String n = formataNumeroDeDoubleParaString(resDiv);
-        String titulo = "";
-        String msg = "";
-
-        if(resDiv <= 0.7){
-            titulo = getString(R.string.escolhaEtanol);
-            msg = getString(R.string.abastecaEtanol) + n;
-        }else{
-            titulo = getString(R.string.escolhaGasolina);
-            msg = getString(R.string.abastecaGasolina) + n;
-        }
-
-        exibirAlertDialog(titulo, msg);
-
-    }
-
-    private void calculaMediaPersonalizada() {
-
-        //Forma os valores do Edit Text Current
-        String etanol = String.valueOf(edtEtanol.getRawValue());
-        String gasolina = String.valueOf(edtGasolina.getRawValue());
-
-        Double valorEtanol        = Double.parseDouble(etanol);
-        Double valorGasolina      = Double.parseDouble(gasolina);
-
-        Double valorConsumoGasolina = Double.parseDouble(edtMediaGasolina.getText().toString());
-        Double valorConsumoEtanol   = Double.parseDouble(edtMediaEtanol.getText().toString());
-        Double valorPersonalizado   = valorConsumoEtanol / valorConsumoGasolina;
-
-        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
-        String n = formataNumeroDeDoubleParaString(resDiv);
-        String titulo = "";
-        String msg = "";
-
-        if(resDiv <= valorPersonalizado){
-            titulo = getString(R.string.escolhaEtanol);
-            msg = getString(R.string.abastecaEtanol) + n;
-        }else{
-            titulo = getString(R.string.escolhaGasolina);
-            msg = getString(R.string.abastecaGasolina) + n;
-        }
-
-        exibirAlertDialog(titulo, msg);
-    }
-
     private void exibirAlertDialog(String titulo, String msg) {
         //Exibindo AlertDialog
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
@@ -194,14 +136,6 @@ public class MainActivity extends AppCompatActivity {
         //Formatando o resultado
         DecimalFormat df = new DecimalFormat("#.##%");
         String res = df.format(resDiv);
-
-        return res;
-    }
-
-    private String formaNumeroDeStringParaDouble(String valor){
-
-        DecimalFormat df = new DecimalFormat("#,##%");
-        String res = df.format(valor);
 
         return res;
     }
@@ -277,8 +211,6 @@ public class MainActivity extends AppCompatActivity {
         presenterValidacoes.calculaPersonalizado(valorEtanol, valorGasolina, valorMediaEtanol, valorMediaGasolina);
 
         Double valorPersonalizado   = valorMediaEtanol / valorMediaGasolina;
-
-
 
     }
 }
