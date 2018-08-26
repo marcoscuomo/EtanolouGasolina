@@ -48,12 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
-
-
-
-
-
+        inicializaMoeda();
 
     }
 
@@ -70,16 +65,9 @@ public class MainActivity extends AppCompatActivity {
         edtMediaEtanol.setText("");
     }
 
-    private void inicializaComponentes() {
-        //Inicializaçoes
-        edtGasolina      = findViewById(R.id.edtGasolina);
-        edtEtanol        = findViewById(R.id.edtEtanol);
-        edtMediaGasolina = findViewById(R.id.edtMediaGasolina);
-        edtMediaEtanol   = findViewById(R.id.edtMediaEtanol);
-        btnCalcular      = findViewById(R.id.btnCalcular);
-        btnLimpar        = findViewById(R.id.btnLimpar);
-        context          = this;
 
+
+    private void inicializaMoeda() {
         //Define o locale como pt-br para exibição do R$
         Locale locale = new Locale("pt", "BR");
         edtGasolina.setLocale(locale);
