@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         context = MainActivity.this;
         ButterKnife.bind(this);
         inicializaMoeda();
@@ -62,11 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
         String etanol        = edtEtanol.getText().toString();
         String gasolina      = edtGasolina.getText().toString();
+        String rawEtanol     = String.valueOf(edtEtanol.getRawValue());
+        String rawGasolina   = String.valueOf(edtGasolina.getRawValue());
         String mediaEtanol   = edtMediaEtanol.getText().toString();
         String mediaGasolina = edtMediaGasolina.getText().toString();
 
         combustivel = new Combustivel();
         combustivel.setValorEtanol(etanol);
+        combustivel.setValorRawEtanol(rawEtanol);
+        combustivel.setValorRawGasolina(rawGasolina);
         combustivel.setValorGasolina(gasolina);
         combustivel.setMediaEtanol(mediaEtanol);
         combustivel.setMediaGasolina(mediaGasolina);
@@ -77,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnCalcular)
     public void validarCampos(){
 
-        String valorEtanol   = edtEtanol.getText().toString();
-        String valorGasolina = edtGasolina.getText().toString();
-        String mediaEtanol   = edtMediaEtanol.getText().toString();
-        String mediaGasolina = edtMediaGasolina.getText().toString();
+        combustivel = pegaCampos();
+
+        String valorEtanol   = combustivel.getValorEtanol();
+        String valorGasolina = combustivel.getValorGasolina();
+        String mediaEtanol   = combustivel.getMediaEtanol();
+        String mediaGasolina = combustivel.getMediaGasolina();
 
         presenterValidacoes.validaCampos(valorEtanol, valorGasolina, mediaEtanol, mediaGasolina);
 
@@ -227,27 +232,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculoNormal() {
 
+        combustivel = pegaCampos();
+
         //Forma os valores do Edit Text Current
-        String etanol = String.valueOf(edtEtanol.getRawValue());
-        String gasolina = String.valueOf(edtGasolina.getRawValue());
+        String etanol   = combustivel.getValorRawEtanol();
+        String gasolina = combustivel.getValorRawGasolina();
 
         Double valorEtanol        = Double.parseDouble(etanol);
         Double valorGasolina      = Double.parseDouble(gasolina);
 
+        presenterValidacoes.calculaNormal(valorEtanol, valorGasolina);
 
+    }
 
-        Double resDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
-        String n = formataNumeroDeDoubleParaString(resDiv);
-        String titulo = "";
-        String msg = "";
+    public void escolhaEtanol(String percentualDiferenca) {
+        String titulo = getString(R.string.escolhaEtanol);
+        String msg = getString(R.string.abastecaEtanol) + " " + percentualDiferenca;
 
-        if(resDiv <= 0.7){
-            titulo = getString(R.string.escolhaEtanol);
-            msg = getString(R.string.abastecaEtanol) + n;
-        }else{
-            titulo = getString(R.string.escolhaGasolina);
-            msg = getString(R.string.abastecaGasolina) + n;
-        }
+        exibirAlertDialog(titulo, msg);
+    }
+
+    public void escolhaGasolina(String percentualDiferenca) {
+        String titulo = getString(R.string.escolhaGasolina);
+        String msg = getString(R.string.abastecaGasolina) + " " + percentualDiferenca;
 
         exibirAlertDialog(titulo, msg);
     }

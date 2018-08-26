@@ -1,5 +1,6 @@
 package br.com.mojumob.etanolougasolina.presenter;
 
+import java.text.DecimalFormat;
 import br.com.mojumob.etanolougasolina.ui.activity.MainActivity;
 
 public class PresenterValidacoes {
@@ -30,5 +31,27 @@ public class PresenterValidacoes {
     }
 
 
+    public void calculaNormal(Double valorEtanol, Double valorGasolina) {
 
+        Double resultadoDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
+        String percentualDiferenca = formataNumeroDeDoubleParaString(resultadoDiv);
+        String titulo = "";
+        String msg = "";
+
+        if(resultadoDiv <= 0.7){
+            mainActivity.escolhaEtanol(percentualDiferenca);
+        }else{
+            mainActivity.escolhaGasolina(percentualDiferenca);
+        }
+    }
+
+
+    private String formataNumeroDeDoubleParaString(Double resDiv){
+
+        //Formatando o resultado
+        DecimalFormat df = new DecimalFormat("#.##%");
+        String res = df.format(resDiv);
+
+        return res;
+    }
 }

@@ -4,25 +4,27 @@ public class Combustivel {
 
     private String valorEtanol;
     private String valorGasolina;
+    private String valorRawEtanol;
+    private String valorRawGasolina;
     private String mediaEtanol;
     private String mediaGasolina;
     private Double precoEtanol;
     private Double precoGasolina;
 
-
-    public Combustivel() {
+    public String getValorRawEtanol() {
+        return valorRawEtanol;
     }
 
-    public Combustivel(String valorEtanol, String valorGasolina) {
-        this.valorEtanol = valorEtanol;
-        this.valorGasolina = valorGasolina;
+    public void setValorRawEtanol(String valorRawEtanol) {
+        this.valorRawEtanol = valorRawEtanol;
     }
 
-    public Combustivel(String valorEtanol, String valorGasolina, String mediaEtanol, String mediaGasolina) {
-        this.valorEtanol = valorEtanol;
-        this.valorGasolina = valorGasolina;
-        this.mediaEtanol = mediaEtanol;
-        this.mediaGasolina = mediaGasolina;
+    public String getValorRawGasolina() {
+        return valorRawGasolina;
+    }
+
+    public void setValorRawGasolina(String valorRawGasolina) {
+        this.valorRawGasolina = valorRawGasolina;
     }
 
     public Double getPrecoEtanol() {
