@@ -2,9 +2,10 @@ package br.com.mojumob.etanolougasolina.presenter;
 
 import java.text.DecimalFormat;
 import br.com.mojumob.etanolougasolina.R;
+import br.com.mojumob.etanolougasolina.task.Calcula;
 import br.com.mojumob.etanolougasolina.ui.activity.MainActivity;
 
-public class PresenterValidacoes {
+public class PresenterValidacoes implements Calcula.Presenter{
 
     MainActivity mainActivity;
 
@@ -12,6 +13,7 @@ public class PresenterValidacoes {
         this.mainActivity = mainActivity;
     }
 
+    @Override
     public void validaCampos(String etanol, String gasolina, String mediaEtanol, String mediaGasolina) {
 
         if(etanol.isEmpty() || etanol.equals("R$0,00")){
@@ -31,7 +33,7 @@ public class PresenterValidacoes {
         }
     }
 
-
+    @Override
     public void calculaNormal(Double valorEtanol, Double valorGasolina) {
 
         Double resultadoDiv = valorEtanol / valorGasolina; //Calcula o percentual de defirença
@@ -46,7 +48,6 @@ public class PresenterValidacoes {
         }
     }
 
-
     private String formataNumeroDeDoubleParaString(Double resDiv){
 
         //Formatando o resultado
@@ -56,6 +57,7 @@ public class PresenterValidacoes {
         return res;
     }
 
+    @Override
     public void calculaPersonalizado(Double valorEtanol,
                                      Double valorGasolina,
                                      Double valorMediaEtanol,

@@ -14,6 +14,7 @@ import java.util.Locale;
 import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.model.Combustivel;
 import br.com.mojumob.etanolougasolina.presenter.PresenterValidacoes;
+import br.com.mojumob.etanolougasolina.task.Calcula;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Atributos da lógica
     private Combustivel combustivel;
-    private PresenterValidacoes presenterValidacoes;
+    //private PresenterValidacoes presenterValidacoes; Refatorado para uma interface
+    private Calcula.Presenter presenterValidacoes;
     private Context context;
     private String msg;
 

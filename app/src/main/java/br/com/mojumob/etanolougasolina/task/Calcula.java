@@ -15,10 +15,12 @@ public interface Calcula {
     }
 
     interface Presenter{
-        void validaCampos();
-        void calculaNormal();
-        void formataNumeroDeDoubleParaString();
-        void calculaPersonalizado();
+        void validaCampos(String etanol, String gasolina, String mediaEtanol, String mediaGasolina);
+        void calculaNormal(Double valorEtanol, Double valorGasolina);
+        void calculaPersonalizado(Double valorEtanol,
+                                  Double valorGasolina,
+                                  Double valorMediaEtanol,
+                                  Double valorMediaGasolina);
     }
 
 }
