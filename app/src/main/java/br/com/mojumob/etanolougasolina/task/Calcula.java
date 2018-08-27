@@ -9,8 +9,8 @@ public interface Calcula {
         void erroValorMediaEtanolVazio();
         void erroValorMediaGasolinaVazio();
         void calculoPersonalizado();
-        void escolhaEtanol();
-        void escolhaGasolina();
+        void escolhaEtanol(String percentualDiferenca);
+        void escolhaGasolina(String percentualDiferenca);
 
     }
 

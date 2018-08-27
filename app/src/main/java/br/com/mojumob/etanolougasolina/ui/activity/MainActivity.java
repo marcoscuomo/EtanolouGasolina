@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Calcula.View {
 
     //Atributos do XML
     @BindView(R.id.btnCalcular)
@@ -133,30 +133,25 @@ public class MainActivity extends AppCompatActivity {
         edtMediaEtanol.setText("");
     }
 
+    @Override
     public void erroValorEtanolEmBranco() {
         exibeMensagem("Preencha o valor do Etanol");
     }
 
+    @Override
     public void erroValorGasolinaEmBranco() {
         exibeMensagem("Preencha o valor da Gasolina");
     }
 
-    public void showMelhorCombustivel() {
-        exibeMensagem("Tudo ok");
-    }
-
+    @Override
     public void erroValorMediaEtanolVazio() {
         exibeMensagem(getString(R.string.campopersonalizadoetanolvazio));
     }
-
+    @Override
     public void erroValorMediaGasolinaVazio() {
         exibeMensagem(getString(R.string.campopersonalizadogasolinavazio));
     }
-
-    public void showMelhorCombustivelPeronalizado() {
-        exibeMensagem("Consumo personalizado");
-    }
-
+    @Override
     public void calculoNormal() {
 
         combustivel = pegaCampos();
@@ -172,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
     public void escolhaEtanol(String percentualDiferenca) {
         String titulo = getString(R.string.escolhaEtanol);
         String msg = getString(R.string.abastecaEtanol) + " " + percentualDiferenca;
@@ -179,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         exibirAlertDialog(titulo, msg);
     }
 
+    @Override
     public void escolhaGasolina(String percentualDiferenca) {
         String titulo = getString(R.string.escolhaGasolina);
         String msg = getString(R.string.abastecaGasolina) + " " + percentualDiferenca;
@@ -186,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         exibirAlertDialog(titulo, msg);
     }
 
+    @Override
     public void calculoPersonalizado() {
 
         combustivel = pegaCampos();
