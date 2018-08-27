@@ -1,35 +1,33 @@
 package br.com.mojumob.etanolougasolina.presenter;
 
 import java.text.DecimalFormat;
-import br.com.mojumob.etanolougasolina.R;
 import br.com.mojumob.etanolougasolina.task.Calcula;
-import br.com.mojumob.etanolougasolina.ui.activity.MainActivity;
 
 public class PresenterValidacoes implements Calcula.Presenter{
 
-    MainActivity mainActivity;
+    private Calcula.View view;
 
-    public PresenterValidacoes(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public PresenterValidacoes(Calcula.View mainActivity) {
+        this.view = mainActivity;
     }
 
     @Override
     public void validaCampos(String etanol, String gasolina, String mediaEtanol, String mediaGasolina) {
 
         if(etanol.isEmpty() || etanol.equals("R$0,00")){
-            mainActivity.erroValorEtanolEmBranco();
+            view.erroValorEtanolEmBranco();
         }else if(gasolina.isEmpty() || gasolina.equals("R$0,00")){
-            mainActivity.erroValorGasolinaEmBranco();
+            view.erroValorGasolinaEmBranco();
         }else if (mediaEtanol.isEmpty() && mediaGasolina.isEmpty()){
             //Calculo realizado com a media padrao, pois o usuario não colocou sua media de consumo
-            mainActivity.calculoNormal();
+            view.calculoNormal();
         }else if(mediaEtanol.isEmpty()){
-            mainActivity.erroValorMediaEtanolVazio();
+            view.erroValorMediaEtanolVazio();
         }else if(mediaGasolina.isEmpty()){
-            mainActivity.erroValorMediaGasolinaVazio();
+            view.erroValorMediaGasolinaVazio();
         }else{
             // Calculo realizado com a media personalizada
-            mainActivity.calculoPersonalizado();
+            view.calculoPersonalizado();
         }
     }
 
@@ -42,9 +40,9 @@ public class PresenterValidacoes implements Calcula.Presenter{
         String msg = "";
 
         if(resultadoDiv <= 0.7){
-            mainActivity.escolhaEtanol(percentualDiferenca);
+            view.escolhaEtanol(percentualDiferenca);
         }else{
-            mainActivity.escolhaGasolina(percentualDiferenca);
+            view.escolhaGasolina(percentualDiferenca);
         }
     }
 
@@ -69,9 +67,9 @@ public class PresenterValidacoes implements Calcula.Presenter{
         Double valorPersonalizado   = valorMediaEtanol / valorMediaGasolina;
 
         if(resultadoDiv <= valorPersonalizado){
-            mainActivity.escolhaEtanol(percentualDiferenca);
+            view.escolhaEtanol(percentualDiferenca);
         }else{
-            mainActivity.escolhaGasolina(percentualDiferenca);
+            view.escolhaGasolina(percentualDiferenca);
         }
 
     }
